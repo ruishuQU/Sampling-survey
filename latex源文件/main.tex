@@ -1,0 +1,77 @@
+% \documentclass[pdfCover]{myreport} % 需要pdf封面
+\documentclass{myreport}
+
+
+\usepackage{subfiles}
+\begin{document}
+
+
+% Generate the Table of Contents if it's needed.
+\begin{center}
+	\tableofcontents
+\end{center}
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\selectlanguage{pinyin}
+\begin{abstract}
+  中文摘要\MyTitle
+	\keywords{中文关键词1 \qquad 中文关键词2}
+\end{abstract}
+
+\selectlanguage{english}
+\begin{abstract}
+	Abstract in English
+	\keywords{English Keywords 1; \qquad English Keywords 2;}
+\end{abstract}
+\selectlanguage{pinyin}
+
+\section{section}
+\subsection{subsection}
+\subsubsection{subsubsection}
+
+\cheineseCenterSection
+\section{中文居中标题}
+	调用命令\func{\textbackslash cheineseCenterSection}即可
+	\subsection{此时二级标题不变}
+		\subsubsection{三级标题也不变}
+
+\section{中文居中标题}
+		\chineseSubsection
+		\subsection{加括号的中文数字做二级标题}
+			调用命令\func{\textbackslash chineseSubsection}即可
+			\subsubsection{三级标题不变}
+
+		\singleArabicSubsubsection
+		\subsubsection{单一数字的三级标题}
+			调用命令\func{\textbackslash singleArabicSubsubsection}即可
+
+
+\section{符号表}
+
+\glsxtrnewsymbol[
+	description={%
+		an example symbol % 对符号的描述
+	},
+	unit={\si{m^2}} % 单位，不显示可以不写
+]{e}{\ensuremath{\mathcal{E}}}
+
+% 符号表
+\printunsrtglossary[type=symbols,style=symbunitlong] % symbols
+
+% 带单位的符号表
+% \printunsrtglossary[type=symbols,style=symblong] % symbols without units
+
+
+\section{插入代码}
+\begin{codebox}
+  \Procname{$bubble\_sort$($A$: the array, $n$: the length of nums)}
+  \li $a = 1$
+  % \li
+
+\end{codebox}
+
+\bibliography{reference}
+\nocite{*}
+\end{document}
